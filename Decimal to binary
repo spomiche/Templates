@@ -1,0 +1,50 @@
+/* This code converts any decimal number that belongs 
+to the [1, 4294967295] interval to binary.
+
+unsigned int is represented on 4 bytes 
+=> max value =  2^32-1 (4294967295) */
+
+#include <iostream>
+using namespace std;
+
+
+/*================ MY FUNCTIONS ===============*/
+
+char Extraction(unsigned int &nr)
+{  
+   unsigned int n = nr;
+   nr/=2;  
+   return n%2 == 1 ? '1' : '0';
+}
+
+
+void PrintBinary (char bin[], int length)
+{
+    for(int i=length-1;i>=0; i--)
+        cout<<bin[i];
+}
+
+/*=============================================*/
+
+int main() {
+
+unsigned int nr; 
+cout<< "Read the desired number: ";
+cin >> nr;
+cout<<endl<<endl;
+
+unsigned int copy = nr;
+char bin[50];
+int length=0;
+while (nr!=0)
+{
+   bin[length] = Extraction(nr);
+   length++;
+}
+
+
+cout<< "The binary conversion for number "<<copy<<" is ";
+PrintBinary(bin, length);
+
+    return 0;
+}
